@@ -1,14 +1,22 @@
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
 module.exports = {
+    entry: './src/index.js',
+    output: {
+        path: path.join(__dirname, '/dist'),
+        filename: 'index_bundle.js'
+    },
     module: {
         rules: [
+            
             {
                 test: /\.js$/,
-                exclude: /node-modules/,
+                exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader"
+                    loader: 'babel-loader'
                 }
             },
             {
@@ -32,12 +40,12 @@ module.exports = {
                     'sass-loader'
                 ]
             }
+
         ]
     },
     plugins: [
-        new HtmlWebPackPlugin({
-            template: './src/index.html',
-            filename: './index.html'
+        new HtmlWebpackPlugin({
+            template: './src/index.html'
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',

@@ -1,4 +1,5 @@
-import {welcome} from './welcome';
-import './styles/main.scss';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './components/App';
 
-console.log(welcome('Liam'));
+ReactDOM.render(<App/>, document.getElementById('app'));
